@@ -9,9 +9,6 @@ const logger = require('morgan');
 require('dotenv').config({path: __dirname + '/.env'})
 const rateLimit = require("express-rate-limit");
 
-const indexRouter = require('./routes/index');
-const comp4537Router = require('./routes/comp4537');
-const pgConnectionRouter = require('./routes/v0/pgConnection');
 const myConnectionRouter = require('./routes/v1/myConnection');
 
 const limiter = rateLimit({
@@ -26,9 +23,6 @@ app.options("*", cors());
 app.use(limiter);
 app.disable('x-powered-by')
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
