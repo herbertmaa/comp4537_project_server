@@ -16,7 +16,7 @@ const myConnectionRouter = require('./routes/v1/myConnection');
 
 const limiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 1000 // limit each IP to 1000 requests per windowMs
 });
 
 const app = express();
@@ -93,9 +93,6 @@ app.locals.professors = {
   deleteCount: 0,
 }
 app.use('/favicon.ico', express.static('images/favicon.ico'));
-app.use('/', indexRouter);
-app.use('/comp4537', comp4537Router);
-app.use('/api/v0', pgConnectionRouter);
 app.use('/api/v1', myConnectionRouter);
 
 
